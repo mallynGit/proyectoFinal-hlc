@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "constructapp-cc45d": {
+      "hosting": {
+        "app": [
+          "constructapp-cc45d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "constructapp-cc45d"
+  }
+}

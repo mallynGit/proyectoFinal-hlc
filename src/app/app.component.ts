@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore'
+import User from './interfaces/user.interface';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -12,7 +16,17 @@ export class AppComponent {
     { title: 'Archived', url: '/folder/archived', icon: 'archive' },
     { title: 'Trash', url: '/folder/trash', icon: 'trash' },
     { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    {title: 'Login', url: '/login',  icon: 'login'}
   ];
+
+
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+  constructor(private store: Firestore, private authFS: Auth) {
+
+
+    console.log(signInWithEmailAndPassword(this.authFS, 'test@test.com', 'Test123!'));
+
+    
+
+  }
 }
