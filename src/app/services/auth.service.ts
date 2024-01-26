@@ -1,8 +1,7 @@
 // auth.service.ts
 
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from './firebase';
+import { Auth, getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -11,22 +10,48 @@ export class AuthService {
 
 
 
-  public auth: any = firebase.auth()
 
+  public auth: Auth
 
+  async createUser(email: string, password: string){
+    try {
+      let e = await createUserWithEmailAndPassword(this.auth, email, password);
+      console.log(e);
+      return 200
+    }
+    catch (err) {
+      console.log(err);
+      return 400
+    }
+  }
 
-  public loginWithEmail = (user: string, password: string) => {
-    console.log(this.auth)
-    this.auth.signInWithEmailAndPassword(user, password)
-    return 'test'
+  async loginWithEmail(user: string, password: string) {
+    try {
+      let e = await signInWithEmailAndPassword(this.auth, user, password);
+      console.log(e);
+
+      return 200
+    }
+    catch (err) {
+      console.log(err);
+      return 400
+    }
+  }
+
+  async logout(){
+    console.log(this.auth.currentUser);
+    await this.auth.signOut();
+    console.log(this.auth.currentUser);
+    return 'ok'
+  }
+
+  returnUserState(){
+    return this.auth.currentUser;
   }
 
   constructor() {
-
-
-
-
-
+    this.auth = getAuth();
+    
   }
 
   // isAdmin(): boolean {

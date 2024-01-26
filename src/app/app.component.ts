@@ -1,32 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore'
-import User from './interfaces/user.interface';
+
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import {AuthService} from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public appPages = [
-    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    {title: 'Login', url: '/login',  icon: 'login'}
+    {title: 'Nivel', url: '/nivel', icon: 'arrowup'},
+    {title: 'Login', url: '/login',  icon: 'login'},
+    {title: 'home', url:'/home', icon: 'home'}
   ];
 
+  
+
+  private auth = new AuthService();
+
+  public async logout(){
+    let e = await this.auth.logout()
+    this.router.navigateByUrl('login')
+    console.log(e);
+    return e    
+  }
 
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor(private store: Firestore, private authFS: Auth) {
+  constructor(private store: Firestore, private authFS: Auth, private router:Router) {
 
-
-    console.log(signInWithEmailAndPassword(this.authFS, 'test@test.com', 'Test123!'));
-
-    
+    // console.log(signInWithEmailAndPassword(this.authFS, 'test@test.com', 'Test123!'));
 
   }
+
+  ngOnInit(): void {
+    console.log('USER STATE', this.auth.returnUserState());
+  }
+
+
 }

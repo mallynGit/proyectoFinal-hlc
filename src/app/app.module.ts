@@ -18,7 +18,7 @@ import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [AppComponent],
   imports: [AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideFirestore(() => getFirestore()), provideDatabase(() => getDatabase()), provideAuth(() => getAuth())],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
