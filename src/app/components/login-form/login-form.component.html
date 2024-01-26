@@ -1,3 +1,27 @@
 <p>
   login-form works!
 </p>
+<button>
+  dasdas
+</button>
+
+<form (submit)="go($event)">
+
+  <ion-item>
+    <ion-input label="Username/Email" placeholder="introduce aqui" labelPlacement="floating" fill="solid"
+      [(ngModel)]="userModel.name" name="username"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Contrasenya" placeholder="introduce aqui" labelPlacement="floating" fill="solid"
+      [(ngModel)]="userModel.password" name="password"></ion-input>
+  </ion-item>
+
+
+  <ion-button type="submit">
+    <ion-label>Login</ion-label>
+  </ion-button>
+
+
+
+</form>
