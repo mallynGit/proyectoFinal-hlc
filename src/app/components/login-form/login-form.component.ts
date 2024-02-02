@@ -1,6 +1,5 @@
 import { Component, Optional } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-form',
@@ -9,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent {
 
-  public authService = new AuthService();
 
   public validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
@@ -20,9 +18,13 @@ export class LoginFormComponent {
     password: ''
   }
 
+  public async restorePassword(email: string){
+    let r = await this.authService.restorePassword(email)
+    return r
+  }
+
   public async go(event: SubmitEvent) {
     event.preventDefault();
-    let r = await this.authService.createUser('hola@hola.com', 'Test123!')
     let e = await this.authService.loginWithEmail(this.userModel.email, this.userModel.password)
     console.log(this.userModel)
     if (this.userModel.email.match(this.validRegex)) {
@@ -33,10 +35,10 @@ export class LoginFormComponent {
       this.userModel.password = '';
       return alert('Introduzca email valido')
     }
-    if(e==200){
+    if (e == 200) {
       console.log('logeaudo');
       this.rout.navigateByUrl('home')
-    }else if(e==400){
+    } else if (e == 400) {
       console.log('error')
       this.userModel.email = '';
       this.userModel.password = '';
@@ -44,7 +46,7 @@ export class LoginFormComponent {
     }
   }
 
-  constructor(private rout:Router) { }
+  constructor(private rout: Router, private authService:AuthService) { }
 
 
 

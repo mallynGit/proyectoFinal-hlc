@@ -1,7 +1,9 @@
 // auth.service.ts
 
 import { Injectable } from '@angular/core';
-import { Auth, getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from '@angular/fire/auth';
+import { FirestoreService } from './firestore.service';
+import User from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,15 +15,36 @@ export class AuthService {
 
   public auth: Auth
 
-  async createUser(email: string, password: string){
+  async restorePassword(email: string){
+    try {
+      await sendPasswordResetEmail(this.auth, email)
+      return 200
+    }
+    catch (err) {
+      console.log(err);
+      return 500
+    }
+  }
+
+  async createUser(email: string, password: string) {
     try {
       let e = await createUserWithEmailAndPassword(this.auth, email, password);
+      let user = e.user
+      let userObj: User = {
+        email: user.email,
+        uid: user.uid,
+        photoURL: user.photoURL,
+        displayName: user.displayName,
+        password: password
+      }
+
+      this.fs.addUser(userObj)
       console.log(e);
       return 200
     }
     catch (err) {
       console.log(err);
-      return 400
+      return 500
     }
   }
 
@@ -38,20 +61,20 @@ export class AuthService {
     }
   }
 
-  async logout(){
+  async logout() {
     console.log(this.auth.currentUser);
     await this.auth.signOut();
     console.log(this.auth.currentUser);
     return 'ok'
   }
 
-  returnUserState(){
+  returnUserState() {
     return this.auth.currentUser;
   }
 
-  constructor() {
+  constructor(private fs: FirestoreService) {
     this.auth = getAuth();
-    
+
   }
 
   // isAdmin(): boolean {
