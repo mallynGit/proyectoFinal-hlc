@@ -1,32 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore'
-import User from './interfaces/user.interface';
+
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import {AuthService} from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
-  public appPages = [
-    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    {title: 'Login', url: '/login',  icon: 'login'}
-  ];
+export class AppComponent implements OnInit {
+  public appPages:any;
+  public userStatus:any;
+  
 
+  // private auth = new AuthService();
 
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor(private store: Firestore, private authFS: Auth) {
+  public async logout(){
+    let e = await this.auth.logout()
+    this.router.navigateByUrl('login')
+    console.log(e);
+    return e    
+  }
 
+  constructor(private store: Firestore, private authFS: Auth, private router:Router, private auth:AuthService) {
 
-    console.log(signInWithEmailAndPassword(this.authFS, 'test@test.com', 'Test123!'));
-
-    
+    // console.log(signInWithEmailAndPassword(this.authFS, 'test@test.com', 'Test123!'));
 
   }
+
+  ngOnInit(): void {
+    this.auth.auth.onAuthStateChanged((user) => {
+      this.userStatus = user
+      console.log('USER STATE BUENO', this.userStatus);
+      if(user==null){
+        this.appPages = [
+          {title: 'Login', url: '/login',  icon: 'person'},
+          {title: 'Register', url:'/register', icon:'person-add'},
+        ]
+      }else{
+        this.router.navigateByUrl('home')
+        this.appPages = [
+          {title: 'Nivel', url: '/nivel', icon: 'book'},
+          {title: 'Home', url:'/home', icon: 'home'},
+          {title: 'Calculadora', url:'/calculadora', icon: 'calculator'},
+          {title: 'Galeria', url:'/galeria', icon: 'images'},
+          {title: 'Notas', url:'/notas', icon: 'book'},
+        ]
+      }
+    })
+  }
+
+
 }

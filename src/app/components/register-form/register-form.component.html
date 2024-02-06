@@ -1,26 +1,19 @@
 <div>
   <ion-list>
-    <form (submit)="go($event)">
-
+    <form (submit)="formRegister($event)">
       <ion-item>
         <ion-input label="Email" placeholder="introduce aqui" labelPlacement="floating" fill="solid"
           [(ngModel)]="userModel.email" name="username"></ion-input>
       </ion-item>
-
       <ion-item>
         <ion-input label="Contrasenya" placeholder="introduce aqui" labelPlacement="floating" fill="solid"
           [(ngModel)]="userModel.password" name="password" type="password"></ion-input>
       </ion-item>
-
       <ion-item>
         <ion-button type="submit">
-          <ion-label>Login</ion-label>
+          <ion-label>Register</ion-label>
         </ion-button>
-        <ion-button (click)="restorePassword(userModel.email)">
-            <ion-label>Restore Password</ion-label>
-          </ion-button>
       </ion-item>
-
     </form>
   </ion-list>
 </div>
