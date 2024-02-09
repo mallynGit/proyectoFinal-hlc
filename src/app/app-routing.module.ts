@@ -20,21 +20,25 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
     canActivate: [AuthGuard]
-  },  {
+  },
+  {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: 'calculadora',
-    loadChildren: () => import('./pages/calculadora/calculadora.module').then( m => m.CalculadoraPageModule)
+    loadChildren: () => import('./pages/calculadora/calculadora.module').then( m => m.CalculadoraPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'galeria',
-    loadChildren: () => import('./pages/galeria/galeria.module').then( m => m.GaleriaPageModule)
+    loadChildren: () => import('./pages/galeria/galeria.module').then( m => m.GaleriaPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'notas',
-    loadChildren: () => import('./pages/notas/notas.module').then( m => m.NotasPageModule)
+    loadChildren: () => import('./pages/notas/notas.module').then( m => m.NotasPageModule),
+    canActivate: [AuthGuard]
   }
 
 

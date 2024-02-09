@@ -14,8 +14,8 @@ export class LoginFormComponent {
 
 
   public userModel = {
-    email: 'test@test.com',
-    password: ''
+    email: 'test@tester.com',
+    password: 'tester'
   }
 
   public async restorePassword(email: string){
@@ -37,7 +37,7 @@ export class LoginFormComponent {
     }
     if (e == 200) {
       console.log('logeaudo');
-      this.rout.navigateByUrl('home')
+      this.rout.navigateByUrl('galeria')
     } else if (e == 400) {
       console.log('error')
       this.userModel.email = '';

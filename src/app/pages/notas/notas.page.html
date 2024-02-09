@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>notas</ion-title>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+      <ion-title>notas</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +13,11 @@
       <ion-title size="large">notas</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div id="notas-container">
+  <app-notas-nota></app-notas-nota>
+  <app-notas-nota></app-notas-nota>
+  <app-notas-nota></app-notas-nota>
+</div>
+
 </ion-content>
