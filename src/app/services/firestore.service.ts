@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import {getStorage} from 'firebase/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,11 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 export class FirestoreService {
 
   public test: AngularFirestoreDocument<any>;
+  public storage:any;
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore) {
+    this.storage = getStorage();
+   }
 
   public addNote(note: any) {
     return this.db.collection('notes').add(note);

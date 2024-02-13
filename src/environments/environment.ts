@@ -12,7 +12,8 @@ export const environment = {
     "authDomain": "constructapp-cc45d.firebaseapp.com",
     "messagingSenderId": "560733147926",
     "measurementId": "G-07BX1M9EHM"
-  }
+  },
+  storageUrl: "https://firebasestorage.googleapis.com/v0/b/constructapp-cc45d.appspot.com/o/"
 };
 
 /*

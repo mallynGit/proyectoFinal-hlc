@@ -14,10 +14,10 @@ export class NotasPage implements OnInit {
   ngOnInit() {
     console.log(this.fs.test)
 
-    this.fs.addNote({
-      title: 'test',
-      content: 'test'
-    })
+    // this.fs.addNote({
+    //   title: 'test',
+    //   content: 'test'
+    // })
   }
 
 }

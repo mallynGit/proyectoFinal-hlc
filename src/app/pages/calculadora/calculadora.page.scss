@@ -7,7 +7,9 @@
     #inputs{
         width: 90%;
         margin: 10px auto 0px;
-        border:1px solid black;
- 
+        
+        ion-input{
+            margin-bottom: 10px;
+        }
     }
 }

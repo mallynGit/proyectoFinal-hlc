@@ -2,5 +2,19 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-   
+
+
+}
+
+#btn {
+    position: absolute;
+    bottom: 1%;
+    width: 100%;
+    background: white;
+    height:70px;
+    ion-button {
+        width: 95vw;
+        margin-left: 2.5%;
+        height:60px;
+    }
 }

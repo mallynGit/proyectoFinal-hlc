@@ -39,7 +39,11 @@ const routes: Routes = [
     path: 'notas',
     loadChildren: () => import('./pages/notas/notas.module').then( m => m.NotasPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'nivel',
+    loadChildren: () => import('./pages/nivel/nivel.module').then( m => m.NivelPageModule)
   }
+
 
 
 ];
