@@ -77,6 +77,10 @@ export class AuthService {
 
   }
 
+  getUserId(){
+    return this.auth.currentUser?.uid
+  }
+
   // isAdmin(): boolean {
   //   // Lógica para verificar si el usuario autenticado es un administrador
   //   // Puedes almacenar el rol en la base de datos o en el token de Firebase.

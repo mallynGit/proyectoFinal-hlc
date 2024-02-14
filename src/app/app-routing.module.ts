@@ -39,10 +39,19 @@ const routes: Routes = [
     path: 'notas',
     loadChildren: () => import('./pages/notas/notas.module').then( m => m.NotasPageModule),
     canActivate: [AuthGuard]
-  },  {
+  },
+  {
     path: 'nivel',
     loadChildren: () => import('./pages/nivel/nivel.module').then( m => m.NivelPageModule)
-  }
+  },  {
+    path: 'image-view',
+    loadChildren: () => import('./pages/image-view/image-view.module').then( m => m.ImageViewPageModule)
+  },
+
+  // {
+  //   path: 'image-view',
+  //   loadChildren: () => import('./components/image-view/image-view.module').then( m => m.ImageViewModule)
+  // }
 
 
 

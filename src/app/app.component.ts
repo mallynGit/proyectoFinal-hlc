@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.auth.auth.onAuthStateChanged((user) => {
       this.userStatus = user
-      console.log('USER STATE BUENO', this.userStatus);
+      // console.log('USER STATE BUENO', this.userStatus);
       if(user==null){
         this.appPages = [
           {title: 'Login', url: '/login',  icon: 'person'},

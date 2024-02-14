@@ -14,13 +14,18 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="images-container">
-    <!-- <app-gallery-image image="https://yamaha.ndcdn.in/media/catalog/product/cache/9e0f31af0cdc06df956748b13dabad87/c/l/clp-765gppe_a_0001_2560_1.jpg"/> -->
-
-      <app-gallery-image *ngFor="let image of images" [image]="image"/>
-
-    <img id="xd">
+  <div id="loading" *ngIf="isLoading">
+    <img src="https://media.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif">
+    <br />
+    Cargando...
   </div>
+
+  <div id="images-container" *ngIf="!isLoading">
+
+    <app-gallery-image *ngFor="let image of images" [image]="image" />
+
+  </div>
+
   <div id="btn">
 
     <ion-button (click)="takePicture()">subir imagen</ion-button>

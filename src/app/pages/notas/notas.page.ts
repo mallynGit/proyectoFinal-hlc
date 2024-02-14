@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
@@ -8,11 +10,23 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class NotasPage implements OnInit {
 
+  public uid: string;
 
-  constructor(private fs: FirestoreService) { }
+  constructor(private fs: FirestoreService, private auth: AuthService) {
+
+  }
+
 
   ngOnInit() {
-    console.log(this.fs.test)
+    this.uid = <string>this.auth.getUserId()
+
+    this.fs.getNotes(this.uid).subscribe((notes) => {
+      console.log(notes);
+    })
+    // .subscribe((notes) => {
+    //   console.log(notes);
+    // })
+
 
     // this.fs.addNote({
     //   title: 'test',
