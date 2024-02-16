@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">nota-view</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="form">
+
+    <ion-input id="title" fill="solid"></ion-input>
+    <ion-textarea id="content" fill="solid"></ion-textarea>
+
+    <div id="btns">
+      <ion-button id="ok"  shape="round" size="large">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>
+      <ion-button id="del" color="danger" shape="round" size=large>
+        <ion-icon name="trash-outline" id="si"></ion-icon>
+      </ion-button>
+      
+
+    </div>
+  </div>
+</ion-content>

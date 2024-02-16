@@ -15,9 +15,16 @@
   </ion-header>
 
   <div id="notas-container">
-  <app-notas-nota></app-notas-nota>
-  <app-notas-nota></app-notas-nota>
-  <app-notas-nota></app-notas-nota>
-</div>
+    <app-notas-nota *ngFor="let nota of notas" [datos]="nota"></app-notas-nota>
+
+  </div>
+
+  <div id="btn">
+
+    <ion-button class="circle-btn" shape="round" (click)="createNote()">
+      +
+    </ion-button>
+
+  </div>
 
 </ion-content>

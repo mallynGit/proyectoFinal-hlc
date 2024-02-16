@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'image-view',
     loadChildren: () => import('./pages/image-view/image-view.module').then( m => m.ImageViewPageModule)
   },
+  {
+    path: 'nota-view',
+    loadChildren: () => import('./pages/nota-view/nota-view.module').then( m => m.NotaViewPageModule)
+  },
 
   // {
   //   path: 'image-view',

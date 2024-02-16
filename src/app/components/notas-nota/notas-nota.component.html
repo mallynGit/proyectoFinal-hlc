@@ -1,21 +1,10 @@
-<div id="nota-container">
-  <p id="title">
-  Test nota sdfsfsfsd
-</p>
-<div id="content">
-  contenido dfssfewfdsfsdadfssfda
-  da
-  dfssfewfdsfsdadfssfdadsa
-  dsa
-  dfssfewfdsfsdadfssfdadsad
-
-  sdadasddas
-
-  dsa
-  <br/>
-  <br/>
-  <br/>
-  aihsbaildsdbajhba
-</div>
+<div id="nota-container" [ngClass]="isExpanded ? 'expanded' : ''" (click)="toggleExpanded($event)">
+  <p id="title" style="display: flex; justify-content: space-between;">
+    {{datos.title}}
+    <ion-icon name="pencil" style="border: 1px solid blue; padding: 4px;" onclick="console.log('clickity')"></ion-icon>
+  </p>
+  <div id="content">
+    {{datos.content}}
+  </div>
 
 </div>

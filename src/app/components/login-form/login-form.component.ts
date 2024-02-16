@@ -37,7 +37,7 @@ export class LoginFormComponent {
     }
     if (e == 200) {
       console.log('logeaudo');
-      this.rout.navigateByUrl('galeria')
+      this.rout.navigateByUrl('notas')
     } else if (e == 400) {
       console.log('error')
       this.userModel.email = '';

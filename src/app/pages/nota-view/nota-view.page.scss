@@ -1,0 +1,35 @@
+#form {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+ion-textarea, ion-input {
+    margin-top: 20px;
+    width: 100%;
+}
+
+#title{
+    margin-top:60px;
+}
+
+#content {
+    margin-bottom:20px;
+    min-height: 55vh;
+}
+
+#ok, #del {
+    position: absolute;
+    bottom: 20px;
+    width: 65px;
+    height: 65px;
+}
+
+#ok {
+    right: 20px;
+}
+
+#del {
+    left: 20px;
+}
