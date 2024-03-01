@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
           {title: 'Register', url:'/register', icon:'person-add'},
         ]
       }else{
-        this.router.navigateByUrl('notas')
+        this.router.navigateByUrl('nivel')
         this.appPages = [
           {title: 'Nivel', url: '/nivel', icon: 'book'},
           {title: 'Home', url:'/home', icon: 'home'},

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -12,31 +13,29 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class NotasPage implements OnInit {
 
   public uid: string;
-  public notas: any[] = []
+  public notas: any[] = [];
 
-  constructor(private fs: FirestoreService, private auth: AuthService, private router:Router) {
-
-  }
+  constructor(private fs: FirestoreService, private auth: AuthService, private router:Router) {}
 
   createNote(){
-    return this.router.navigateByUrl('/nota-view')
+    console.log(this.notas);
+    return this.router.navigateByUrl('/nota-view');
   }
 
   ngOnInit() {
-    this.uid = <string>this.auth.getUserId()
+    this.uid = <string>this.auth.getUserId();
 
-    this.fs.getNotes(this.uid).subscribe((notes) => {
-      this.notas = notes
-    })
-    // .subscribe((notes) => {
-    //   console.log(notes);
-    // })
-
-
-    // this.fs.addNote({
-    //   title: 'test',
-    //   content: 'test'
-    // })
+    this.fs.getNotes(this.uid).pipe(
+      switchMap(notes => {
+        return this.orderNotesByDate(notes);
+      })
+    ).subscribe(sortedNotes => {
+      this.notas = sortedNotes;
+    });
   }
 
+  private orderNotesByDate(notes: any[]): Observable<any[]> {
+    // ordenar por la fecha en orden descendente
+    return of(notes.sort((a, b) => b.date - a.date));
+  }
 }

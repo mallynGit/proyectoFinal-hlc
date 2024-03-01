@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Camera, CameraResultType, Photo } from '@capacitor/camera'
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { ref, uploadString, listAll, getDownloadURL } from 'firebase/storage'
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-galeria',
@@ -11,7 +12,6 @@ import { ref, uploadString, listAll, getDownloadURL } from 'firebase/storage'
 })
 export class GaleriaPage implements OnInit {
 
-  private xd: HTMLImageElement
   public images: string[] = [];
   public isLoading: boolean = true;
 
@@ -59,13 +59,37 @@ export class GaleriaPage implements OnInit {
   });
 
   public async takePicture() {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: true,
-      resultType: CameraResultType.Uri
-    })
+    let image;
+    let actionSheetController:ActionSheetController = new ActionSheetController()
+ let b64:string = '';
+    const actionSheet = await actionSheetController.create({
+      buttons: [{
+        text: 'Tomar una foto',
+        icon: 'camera',
+        handler: () => {
+          Camera.getPhoto({
+            quality: 90,
+            allowEditing: true,
+            resultType: CameraResultType.Uri
+          }).then(async (imagen) => {
+            console.log(imagen);
+           image = imagen;
+           b64 = (await this.readAsBase64(image)).valueOf();
+          }).catch((error) => {
+            console.log(error,'ERORR?!!!!!!!!!!');
+          });
+        }
+      }, {
+        text: 'Seleccionar desde la Galeria',
+        icon: 'images',
+        handler: async () => {
+          await console.log('nada')
+        }
+      }]
+    });
+    await actionSheet.present();
 
-    let b64 = (await this.readAsBase64(image)).valueOf();
+    
 
     uploadString(ref(this.fs.storage, `${this.auth.returnUserState()?.uid}/${Date.now()}`), b64, 'data_url').then((snapshot) => {
       console.log('Uploaded a base64 string!', snapshot);
@@ -76,7 +100,6 @@ export class GaleriaPage implements OnInit {
 
   ngOnInit() {
     // console.log(`${this.auth.returnUserState()?.uid}-${Date.now()}.jpg`);
-    this.xd = document.getElementById('xd') as HTMLImageElement
 
     this.fetchImages()
 
