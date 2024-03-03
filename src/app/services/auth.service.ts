@@ -26,6 +26,10 @@ export class AuthService {
     }
   }
 
+  returnUserDoc(uid: string) {
+    return this.fs.getUserById(uid)
+  }
+
   async createUser(email: string, password: string) {
     try {
       let e = await createUserWithEmailAndPassword(this.auth, email, password);
@@ -78,6 +82,7 @@ export class AuthService {
   }
 
   getUserId(){
+    
     return this.auth.currentUser?.uid
   }
 

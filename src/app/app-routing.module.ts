@@ -43,7 +43,8 @@ const routes: Routes = [
   {
     path: 'nivel',
     loadChildren: () => import('./pages/nivel/nivel.module').then( m => m.NivelPageModule)
-  },  {
+  },
+  {
     path: 'image-view',
     loadChildren: () => import('./pages/image-view/image-view.module').then( m => m.ImageViewPageModule)
   },
@@ -51,6 +52,14 @@ const routes: Routes = [
     path: 'nota-view',
     loadChildren: () => import('./pages/nota-view/nota-view.module').then( m => m.NotaViewPageModule)
   },
+  {
+    path: 'groups',
+    loadChildren: () => import('./pages/groups/groups.module').then( m => m.GroupsPageModule)
+  },  {
+    path: 'group-view',
+    loadChildren: () => import('./pages/group-view/group-view.module').then( m => m.GroupViewPageModule)
+  },
+
 
   // {
   //   path: 'image-view',

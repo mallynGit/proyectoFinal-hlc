@@ -24,6 +24,7 @@ export class NotasPage implements OnInit {
 
   ngOnInit() {
     this.uid = <string>this.auth.getUserId();
+    console.log(this.uid,'uidnotas')
 
     this.fs.getNotes(this.uid).pipe(
       switchMap(notes => {

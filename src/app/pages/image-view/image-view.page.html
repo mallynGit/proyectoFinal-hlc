@@ -1,7 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons>
       <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button slot="end" (click)="deleteImg()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +15,7 @@
   <div id="content-wrapper">
     <div id="img-container">
       <pinch-zoom>
-        <img [src]="image" alt="Image">
+        <img [src]="image" alt="Image" />
       </pinch-zoom>
     </div>
   </div>
