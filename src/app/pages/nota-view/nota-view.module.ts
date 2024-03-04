@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { NotaViewPageRoutingModule } from './nota-view-routing.module';
 
 import { NotaViewPage } from './nota-view.page';
+import { DatestringPipe } from "../../pipes/datestring.pipe";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    NotaViewPageRoutingModule
-  ],
-  declarations: [NotaViewPage]
+    declarations: [NotaViewPage],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        NotaViewPageRoutingModule,
+        DatestringPipe
+    ]
 })
 export class NotaViewPageModule {}
