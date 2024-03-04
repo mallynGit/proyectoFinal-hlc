@@ -14,9 +14,10 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { getAuth, provideAuth } from '@angular/fire/auth'
 import { AuthService } from './services/auth.service';
+import { DatepipePipe } from './pipes/datepipe.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DatepipePipe],
   imports: [AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideFirestore(() => getFirestore()), provideDatabase(() => getDatabase()), provideAuth(() => getAuth())],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

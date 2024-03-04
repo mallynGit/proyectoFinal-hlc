@@ -28,6 +28,7 @@ export class NotasPage implements OnInit {
 
     this.fs.getNotes(this.uid).pipe(
       switchMap(notes => {
+        console.log(notes,'notes')
         return this.orderNotesByDate(notes);
       })
     ).subscribe(sortedNotes => {

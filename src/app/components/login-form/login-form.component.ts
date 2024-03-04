@@ -11,11 +11,9 @@ export class LoginFormComponent {
 
   public validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-
-
   public userModel = {
-    email: 'test@tester.com',
-    password: 'tester'
+    email: '',
+    password: ''
   }
 
   public async restorePassword(email: string){

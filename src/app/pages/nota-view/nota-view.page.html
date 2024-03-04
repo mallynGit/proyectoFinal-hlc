@@ -14,19 +14,38 @@
     </ion-toolbar>
   </ion-header>
   <div id="form">
+    <ion-input
+      id="title"
+      fill="solid"
+      [(ngModel)]="title"
+      (change)="inputUpdate($event)"
+    ></ion-input>
+    <ion-textarea
+      id="content"
+      fill="solid"
+      [(ngModel)]="content"
+      (change)="inputUpdate($event)"
+    ></ion-textarea>
 
-    <ion-input id="title" fill="solid" [(ngModel)]="title" (change)="inputUpdate($event)"></ion-input>
-    <ion-textarea id="content" fill="solid" [(ngModel)]="content" (change)="inputUpdate($event)"></ion-textarea>
-
+    <ion-item>
+      <ion-label>
+        <h3>Ultima modificacion: &nbsp;</h3>
+        <p id="date"></p>
+      </ion-label>
+    </ion-item>
     <div id="btns">
       <ion-button id="ok" shape="round" size="large" (click)="saveNote()">
         <ion-icon name="checkmark-outline"></ion-icon>
       </ion-button>
-      <ion-button id="del" color="danger" shape="round" size=large (click)="deleteNote()">
+      <ion-button
+        id="del"
+        color="danger"
+        shape="round"
+        size="large"
+        (click)="deleteNote()"
+      >
         <ion-icon name="trash-outline"></ion-icon>
       </ion-button>
-
-
     </div>
   </div>
 </ion-content>

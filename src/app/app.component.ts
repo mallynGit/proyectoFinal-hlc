@@ -14,9 +14,6 @@ export class AppComponent implements OnInit {
   public appPages:any;
   public userStatus:any;
   
-
-  // private auth = new AuthService();
-
   public async logout(){
     let e = await this.auth.logout()
     this.router.navigateByUrl('login')
@@ -26,29 +23,22 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Firestore, private authFS: Auth, private router:Router, private auth:AuthService) {
 
-    // console.log(signInWithEmailAndPassword(this.authFS, 'test@test.com', 'Test123!'));
-
   }
 
   ngOnInit(): void {
     this.auth.auth.onAuthStateChanged((user) => {
       this.userStatus = user
-      // console.log('USER STATE BUENO', this.userStatus);
       if(user==null){
         this.appPages = [
           {title: 'Login', url: '/login',  icon: 'person'},
           {title: 'Register', url:'/register', icon:'person-add'},
         ]
       }else{
-        this.router.navigateByUrl('groups')
+        this.router.navigateByUrl('nivel')
         this.appPages = [
           {title: 'Nivel', url: '/nivel', icon: 'book'},
-          {title: 'Home', url:'/home', icon: 'home'},
-          {title: 'Calculadora', url:'/calculadora', icon: 'calculator'},
           {title: 'Galeria', url:'/galeria', icon: 'images'},
           {title: 'Notas', url:'/notas', icon: 'book'},
-          {title: 'Crear grupo', url: '/new-group', icon: 'add'},
-          {title: 'Grupos', url: '/groups', icon: 'people'},
         ]
       }
     })

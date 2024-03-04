@@ -14,8 +14,7 @@ export class NotasNotaComponent  {
   isExpanded: boolean = false;
 
   toggleExpanded(event: Event) {
-    // let target = event.currentTarget as HTMLElement
-    // console.log(getComputedStyle(target).height)
+
     this.isExpanded = !this.isExpanded;
     
   }

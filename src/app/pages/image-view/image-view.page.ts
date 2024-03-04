@@ -26,7 +26,7 @@ export class ImageViewPage implements OnInit {
 
   public deleteImg(){
     this.fs.deleteImage(this.item)
-    this.router.navigate(['/home'])
+    this.router.navigate(['/galeria'])
     console.log('deleteImg', this.item)
   }
 

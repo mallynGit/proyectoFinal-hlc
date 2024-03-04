@@ -10,9 +10,6 @@ import User from '../interfaces/user.interface';
 })
 export class AuthService {
 
-
-
-
   public auth: Auth
 
   async restorePassword(email: string){
@@ -26,9 +23,6 @@ export class AuthService {
     }
   }
 
-  returnUserDoc(uid: string) {
-    return this.fs.getUserById(uid)
-  }
 
   async createUser(email: string, password: string) {
     try {
@@ -85,10 +79,4 @@ export class AuthService {
     
     return this.auth.currentUser?.uid
   }
-
-  // isAdmin(): boolean {
-  //   // Lógica para verificar si el usuario autenticado es un administrador
-  //   // Puedes almacenar el rol en la base de datos o en el token de Firebase.
-  //   // Devuelve true si el usuario es un administrador, de lo contrario, false.
-  // }
 }

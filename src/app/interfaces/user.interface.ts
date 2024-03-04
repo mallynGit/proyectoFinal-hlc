@@ -4,5 +4,4 @@ export default interface User {
     email?: any;
     photoURL?: any;
     displayName?: any;
-    groups?: string[]
 }

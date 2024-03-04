@@ -16,20 +16,21 @@
 
 #circle {
     margin: 0 auto;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     background-color: #007bff;
     color: white;
     font-size: 40px;
-    position: relative;
+    position: absolute;
+    top:39%;
+    left:15%;
     #dot {
         width: 10px;
         height: 10px;
         border-radius: 50%;
         background-color: red;
         position: relative;
-        // top:0%;left:0%;
     }
 }
 
@@ -37,7 +38,7 @@
     height: 30%;
     width:20px;
     position: absolute;
-    left:87%;
+    left:85%;
     top: 37%;
     background-color: green;
 }
@@ -51,7 +52,7 @@
   width: 100%;
   height: 2px;
   background-color: black;
-  z-index: 1; /* Para asegurar que las líneas estén sobre el círculo */
+  z-index: 1; /* lineas por encima del circulo */
 }
 
 #vcenter-mark-before {
@@ -70,7 +71,7 @@
   width: 2px;
   height: 100%;
   background-color: black;
-  z-index: 1; /* Para asegurar que las líneas estén sobre el círculo */
+  z-index: 1; 
 }
 
 #hcenter-mark-before {
@@ -84,9 +85,11 @@
 #level {
     background-color: #007bff;
     height: 20px;
-    position: relative;
+    position: absolute;
     // margin-left:auto;
     width:80%;
+    left:10%;
+    top:32%;
   }
   
   #lvldot {
@@ -95,11 +98,7 @@
     border-radius: 50%;
     background-color: red;
     position: absolute;
-    // top: 50%;
-    // transform: translate(-50%, -50%);
+
   }
-  
-  .leveled {
-    background-color: green; /* Cambia el color del rectángulo cuando está nivelado horizontalmente */
-  }
+
   

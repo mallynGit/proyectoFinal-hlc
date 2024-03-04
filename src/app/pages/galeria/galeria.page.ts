@@ -15,13 +15,12 @@ export class GaleriaPage implements OnInit {
   public isLoading: boolean = true;
 
   ngOnInit() {
-    // console.log(`${this.auth.returnUserState()?.uid}-${Date.now()}.jpg`);
 
     this.fetchImages();
   }
   
   ionViewWillEnter() {
-    this.fetchImages(); // Call fetchImages whenever the page is entered
+    this.fetchImages();
   }
 
   constructor(private auth: AuthService, private fs: FirestoreService) {}
@@ -103,10 +102,6 @@ export class GaleriaPage implements OnInit {
       this.fetchImages();
     });
   }
-
-
-
-  // this.xd!.src = imageUrl
 
 
 }
