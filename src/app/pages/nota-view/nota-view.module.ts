@@ -8,6 +8,7 @@ import { NotaViewPageRoutingModule } from './nota-view-routing.module';
 
 import { NotaViewPage } from './nota-view.page';
 import { DatestringPipe } from "../../pipes/datestring.pipe";
+import { ComponentModuleModule } from 'src/app/components/component.module';
 
 @NgModule({
     declarations: [NotaViewPage],
@@ -16,7 +17,8 @@ import { DatestringPipe } from "../../pipes/datestring.pipe";
         FormsModule,
         IonicModule,
         NotaViewPageRoutingModule,
-        DatestringPipe
+        DatestringPipe,
+        ComponentModuleModule
     ]
 })
 export class NotaViewPageModule {}

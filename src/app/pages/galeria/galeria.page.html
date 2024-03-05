@@ -1,21 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons>
-      <ion-menu-button></ion-menu-button>
-      <ion-title>Galeria</ion-title>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Galeria" mode="menu"></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Galeria</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <div id="loading" *ngIf="isLoading">
-    <img src="https://media.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif">
+    <img src="../../../assets/loading-buffering.gif">
     <br />
     Cargando...
   </div>

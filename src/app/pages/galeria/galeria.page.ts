@@ -10,14 +10,11 @@ import { ActionSheetController } from '@ionic/angular';
   templateUrl: './galeria.page.html',
   styleUrls: ['./galeria.page.scss'],
 })
-export class GaleriaPage implements OnInit {
+export class GaleriaPage {
   public images: string[] = [];
   public isLoading: boolean = true;
 
-  ngOnInit() {
 
-    this.fetchImages();
-  }
   
   ionViewWillEnter() {
     this.fetchImages();
@@ -32,7 +29,7 @@ export class GaleriaPage implements OnInit {
 
     listAll(ref(this.fs.storage, `${this.auth.returnUserState()?.uid}`)).then(
       (res) => {
-        // console.log(res.items, 'items XDDXDX');
+        console.log(res.items, 'items XDDXDX');
         const downloadURLPromises: Promise<string>[] = res.items.map((item) =>
           getDownloadURL(
             ref(
@@ -45,6 +42,7 @@ export class GaleriaPage implements OnInit {
         Promise.all(downloadURLPromises)
           .then((urls) => {
             this.images = urls;
+            console.log(this.images,'hola????')
             this.isLoading = false;
           })
           .catch((error) => {

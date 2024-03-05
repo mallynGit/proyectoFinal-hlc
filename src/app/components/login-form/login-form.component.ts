@@ -26,15 +26,12 @@ export class LoginFormComponent {
     let e = await this.authService.loginWithEmail(this.userModel.email, this.userModel.password)
     console.log(this.userModel)
     if (this.userModel.email.match(this.validRegex)) {
-      console.log('ES EMAIL');
     } else {
-      console.log(';no email XD');
       this.userModel.email = '';
       this.userModel.password = '';
       return alert('Introduzca email valido')
     }
     if (e == 200) {
-      console.log('logeaudo');
       this.rout.navigateByUrl('notas')
     } else if (e == 400) {
       console.log('error')

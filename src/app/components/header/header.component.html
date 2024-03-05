@@ -1,0 +1,9 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button id="back" *ngIf="mode==='back'" style="display:block;"></ion-back-button>
+      <ion-menu-button *ngIf="mode==='menu'"></ion-menu-button>
+      <ion-title>{{title}}</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

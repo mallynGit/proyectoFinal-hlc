@@ -7,14 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { NivelPageRoutingModule } from './nivel-routing.module';
 
 import { NivelPage } from './nivel.page';
+import { HeaderComponent } from 'src/app/components/header/header.component';
+import { ComponentModuleModule } from 'src/app/components/component.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NivelPageRoutingModule
+    NivelPageRoutingModule,
+    ComponentModuleModule
   ],
   declarations: [NivelPage]
 })
-export class NivelPageModule {}
+export class NivelPageModule { }

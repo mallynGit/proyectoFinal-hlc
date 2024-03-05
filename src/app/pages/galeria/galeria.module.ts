@@ -9,6 +9,7 @@ import { GaleriaPageRoutingModule } from './galeria-routing.module';
 import { GaleriaPage } from './galeria.page';
 import { GalleryImageComponent } from 'src/app/components/gallery-image/gallery-image.component';
 import { PinchZoomModule } from '@meddv/ngx-pinch-zoom';
+import { ComponentModuleModule } from 'src/app/components/component.module';
 
 @NgModule({
   imports: [
@@ -16,8 +17,9 @@ import { PinchZoomModule } from '@meddv/ngx-pinch-zoom';
     FormsModule,
     IonicModule,
     GaleriaPageRoutingModule,
-    PinchZoomModule
+    PinchZoomModule, 
+    ComponentModuleModule
   ],
-  declarations: [GaleriaPage, GalleryImageComponent]
+  declarations: [GaleriaPage]
 })
-export class GaleriaPageModule {}
+export class GaleriaPageModule { }

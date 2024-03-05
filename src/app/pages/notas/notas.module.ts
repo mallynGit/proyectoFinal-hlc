@@ -8,14 +8,16 @@ import { NotasPageRoutingModule } from './notas-routing.module';
 
 import { NotasPage } from './notas.page';
 import { NotasNotaComponent } from 'src/app/components/notas-nota/notas-nota.component';
+import { ComponentModuleModule } from 'src/app/components/component.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotasPageRoutingModule
+    NotasPageRoutingModule,
+    ComponentModuleModule
   ],
-  declarations: [NotasPage, NotasNotaComponent]
+  declarations: [NotasPage]
 })
 export class NotasPageModule {}

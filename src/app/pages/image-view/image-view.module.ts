@@ -8,6 +8,7 @@ import { ImageViewPageRoutingModule } from './image-view-routing.module';
 
 import { ImageViewPage } from './image-view.page';
 import { PinchZoomModule } from '@meddv/ngx-pinch-zoom';
+import { ComponentModuleModule } from 'src/app/components/component.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { PinchZoomModule } from '@meddv/ngx-pinch-zoom';
     FormsModule,
     IonicModule,
     ImageViewPageRoutingModule, 
-    PinchZoomModule
+    PinchZoomModule,
+    ComponentModuleModule
   ],
   declarations: [ImageViewPage]
 })

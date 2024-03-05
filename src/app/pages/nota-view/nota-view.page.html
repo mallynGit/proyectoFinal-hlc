@@ -1,18 +1,7 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button id="back"></ion-back-button>
-      <ion-title>editar nota</ion-title>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Editar nota" mode="back"></app-header>
+
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">nota-view</ion-title>
-    </ion-toolbar>
-  </ion-header>
   <div id="form">
     <ion-input
       id="title"
@@ -27,7 +16,7 @@
       (change)="inputUpdate($event)"
     ></ion-textarea>
 
-    <ion-item>
+    <ion-item *ngIf="date">
       <ion-label>
         <h3>Ultima modificacion: &nbsp;</h3>
         <p id="date">{{date | datestring}}</p>

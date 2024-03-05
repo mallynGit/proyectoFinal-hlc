@@ -6,9 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DatestringPipe implements PipeTransform {
   transform(date: any): Date {
-    // Add timestamp to the note
-
-    console.log(date,'date')
     date = new Date(date);
    
     return  date.toISOString();
