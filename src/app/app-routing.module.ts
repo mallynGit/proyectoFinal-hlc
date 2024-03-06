@@ -30,15 +30,19 @@ const routes: Routes = [
   },
   {
     path: 'nivel',
-    loadChildren: () => import('./pages/nivel/nivel.module').then( m => m.NivelPageModule)
+    loadChildren: () => import('./pages/nivel/nivel.module').then( m => m.NivelPageModule),
+    canActivate: [AuthGuard]
   },
+  
   {
     path: 'image-view',
-    loadChildren: () => import('./pages/image-view/image-view.module').then( m => m.ImageViewPageModule)
+    loadChildren: () => import('./pages/image-view/image-view.module').then( m => m.ImageViewPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'nota-view',
-    loadChildren: () => import('./pages/nota-view/nota-view.module').then( m => m.NotaViewPageModule)
+    loadChildren: () => import('./pages/nota-view/nota-view.module').then( m => m.NotaViewPageModule),
+    canActivate: [AuthGuard]
   },
 
 ];
