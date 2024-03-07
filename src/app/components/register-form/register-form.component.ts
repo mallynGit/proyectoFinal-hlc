@@ -19,7 +19,7 @@ export class RegisterFormComponent  implements OnInit {
     event.preventDefault()
     let r = await this.createUser(this.userModel.email, this.userModel.password)
     if(r == 200){
-      this.rout.navigateByUrl('home')
+      this.rout.navigateByUrl('nivel')
     }else{
       console.log(r);
       

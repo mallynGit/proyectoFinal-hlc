@@ -34,9 +34,8 @@ export class AppComponent implements OnInit {
           {title: 'Register', url:'/register', icon:'person-add'},
         ]
       }else{
-        this.router.navigateByUrl('nivel')
         this.appPages = [
-          {title: 'Nivel', url: '/nivel', icon: 'book'},
+          {title: 'Nivel', url: '/nivel', type:'ruler-measure', icon: 'compass'},
           {title: 'Galeria', url:'/galeria', icon: 'images'},
           {title: 'Notas', url:'/notas', icon: 'book'},
         ]
